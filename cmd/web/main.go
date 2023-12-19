@@ -18,10 +18,12 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// Add a new users field to the application struct.
 type application struct {
 	errorLog	*log.Logger
 	infoLog		*log.Logger
 	snippets	*models.SnippetModel
+	users		*models.UserModel
 	templateCache	map[string]*template.Template
 	formDecoder	*form.Decoder
 	sessionManager	*scs.SessionManager
@@ -59,10 +61,12 @@ func main() {
 	// unsecure HTTP connection).
 	sessionManager.Cookie.Secure = true
 
+	// Initialize a models.UserModel instance and add it to the application dependencies.
 	app := &application{
 		errorLog: errorLog,
 		infoLog: infoLog,
 		snippets: &models.SnippetModel{DB: db},
+		users: &models.UserModel{DB: db},
 		templateCache: templateCache,
 		formDecoder: formDecoder,
 		sessionManager: sessionManager,
