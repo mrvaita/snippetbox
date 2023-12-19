@@ -199,7 +199,8 @@ func (app *application) userLoginPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	// Check whether the credentials are valid. If they're not, add a generic // non-field error message and re-display the login page.
+	// Check whether the credentials are valid. If they're not, add a generic
+	// non-field error message and re-display the login page.
 	id, err := app.users.Authenticate(form.Email, form.Password)
 	if err != nil {
 		if errors.Is(err, models.ErrInvalidCredentials) {
