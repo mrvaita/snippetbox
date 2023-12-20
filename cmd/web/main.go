@@ -18,7 +18,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// Add a new users field to the application struct.
 type application struct {
 	errorLog	*log.Logger
 	infoLog		*log.Logger
@@ -57,7 +56,6 @@ func main() {
 	sessionManager.Lifetime = 12 * time.Hour
 	sessionManager.Cookie.Secure = true
 
-	// Initialize a models.UserModel instance and add it to the application dependencies.
 	app := &application{
 		errorLog: errorLog,
 		infoLog: infoLog,
