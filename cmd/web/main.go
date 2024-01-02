@@ -19,7 +19,7 @@ import (
 )
 
 type application struct {
-	debug		bool // Add a new debug field.
+	debug		bool
 	errorLog	*log.Logger
 	infoLog		*log.Logger
 	snippets	models.SnippetModelInterface
@@ -59,7 +59,7 @@ func main() {
 	sessionManager.Cookie.Secure = true
 
 	app := &application{
-		debug: *debug, // Add the debug flag value to the application struct.
+		debug: *debug,
 		errorLog: errorLog,
 		infoLog: infoLog,
 		snippets: &models.SnippetModel{DB: db},
